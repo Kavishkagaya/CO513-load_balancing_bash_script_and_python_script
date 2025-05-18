@@ -5,6 +5,6 @@ REQUESTS=10000
 
 for i in $(seq 1 "$REQUESTS"); do
   echo "Request $i:"
-  curl -X GET "http://$LB_ADDRESS/"
+  curl -X GET -s -w "Time: %{time_total}s\n" "http://$LB_ADDRESS/"
   sleep 1
 done
